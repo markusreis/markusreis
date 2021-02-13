@@ -82,7 +82,7 @@ $table_prefix = 'wp_';
  */
 define( 'WP_DEBUG', true);
 
-define('WP_PLUGIN_DIR', '/bitnami/wordpress' . '/wp-content/plugins');
+//define('WP_PLUGIN_DIR', '/bitnami/wordpress' . '/wp-content/plugins');
 /* That's all, stop editing! Happy publishing. */
 
 
