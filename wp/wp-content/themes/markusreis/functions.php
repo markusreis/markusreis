@@ -197,7 +197,7 @@ function responsive_picture($img, $max = 2049)
         'xxl' => 2048,
     ];
 
-    $out = '<img src="image-small.png" srcset="';
+    $out = '<img src="' . $img['sizes']['sm'] . '" srcset="';
     foreach ($sizes as $key => $width) {
         $out .= $img['sizes'][$key] . ' ' . $width . 'w,';
     }

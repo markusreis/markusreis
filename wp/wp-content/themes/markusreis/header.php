@@ -76,7 +76,7 @@
         <div class="c-line padding-bottom">
             <div class="c-line__inner">
                 <div class="c-line__line">
-                    <div class="c-line__thumb" data-cursor data-cursor-action="thumb">
+                    <div class="c-line__thumb" id="thumb" data-cursor data-cursor-action="thumb">
                         <div class="c-line__thumb__inner"></div>
                     </div>
                 </div>

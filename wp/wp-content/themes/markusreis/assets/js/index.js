@@ -2,6 +2,7 @@ import {preload} from "./preload";
 import {Three} from "./three/three";
 import {Cursor} from "./modules/Cursor";
 import {nav} from "./simples/nav";
+import {Scroll} from "./modules/Scroll";
 
 (function () {
 
@@ -11,6 +12,8 @@ import {nav} from "./simples/nav";
             this.three = new Three({container: document.documentElement, app: this})
             this.cursor = new Cursor({app: this})
             this.three.init()
+            
+            this.scroll = new Scroll()
 
             this._state = {
                 sphereSizeLocked: true
@@ -24,4 +27,3 @@ import {nav} from "./simples/nav";
         preload(({p}) => {console.log(p)}).then(() => window.app = new App())
     })
 })()
-
