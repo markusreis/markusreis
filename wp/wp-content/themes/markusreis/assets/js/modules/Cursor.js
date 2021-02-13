@@ -1,4 +1,4 @@
-import {lerp, selfOrClosest} from "../utils";
+import {getCumulativeElementOffset, lerp, selfOrClosest} from "../utils";
 
 export class Cursor {
     constructor({app}) {
@@ -43,9 +43,10 @@ export class Cursor {
                     if (node.dataset.cursorAction) {
                         this[node.dataset.cursorAction](node)
                     } else {
+                        const {top, left} = getCumulativeElementOffset(node)
                         this.updateCursorTarget({
-                                                    x: node.offsetLeft + node.clientWidth / 2,
-                                                    y: node.offsetTop + node.clientHeight / 2
+                                                    x: left + node.clientWidth / 2,
+                                                    y: top + node.clientHeight / 2
                                                 })
                     }
 
@@ -70,6 +71,7 @@ export class Cursor {
                     this.cursors[1].node.style.removeProperty('border-radius');
                     this.cursors[1].node.style.removeProperty('opacity');
                     this.cursors[1].node.style.removeProperty('background');
+                    this.cursors[1].node.style.removeProperty('mix-blend-mode');
                 }
             }
         })
@@ -81,9 +83,23 @@ export class Cursor {
         this.cursors[1].node.style.borderRadius = '0px'
         this.cursors[1].node.style.height = '10px'
         this.cursors[1].node.style.width = node.clientWidth + 'px'
+        this.cursors[1].node.style.mixBlendMode = 'exclusion'
         this.updateCursorTarget({
                                     x: node.offsetLeft + node.clientWidth / 2,
                                     y: node.offsetTop + node.clientHeight
+                                })
+    }
+
+    thumb(node) {
+        this.cursors[1].node.style.opacity = '.9'
+        this.cursors[1].node.style.background = 'white'
+        this.cursors[1].node.style.borderRadius = '0px'
+        this.cursors[1].node.style.height = `${node.clientHeight + 5}px`
+        this.cursors[1].node.style.width = '6px'
+        const {top, left} = getCumulativeElementOffset(node)
+        this.updateCursorTarget({
+                                    x: left,
+                                    y: top - 2 + node.clientHeight / 2
                                 })
     }
 

@@ -35,7 +35,7 @@ export const preload = ({onProgress = ({total, current, p}) => {}, container = d
 
     const fonts = {
         google: {
-            families: ['Alatsi', 'Heebo']
+            families: ['Alatsi', 'Heebo:200,300,400,700']
         },
         //typekit   : {id: 'jxt3zgm'}
         //typekit: {

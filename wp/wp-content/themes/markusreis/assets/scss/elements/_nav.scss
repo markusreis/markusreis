@@ -4,6 +4,14 @@
   justify-content: center;
   align-items: center;
   z-index: 5;
+  right: #{$border-padding_xs+$border-size__xs - $logoWidthXS + 7};
+  position: relative;
+  @include media(sm) {
+    right: -21px;
+  }
+  @include media(lg) {
+    right: -31px;
+  }
 }
 
 nav {
@@ -60,14 +68,11 @@ nav {
   nav span {
     opacity: 1;
     transform: translateX(0) !important;
+    transition: transform 1.3s ease, opacity 1s ease;
   }
 
   nav {
     pointer-events: initial;
-  }
-
-  nav span {
-    transition: transform 1.3s ease, opacity 1s ease;
   }
 
   nav ul {

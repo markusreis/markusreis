@@ -4,16 +4,18 @@ header {
   left: 0;
   width: 100%;
   mix-blend-mode: exclusion;
-
+  z-index: 5;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
 
-  padding: $border-padding_xs+$border-size__xs;
-
   #brand, #nav-toggle {
-    flex: 0 0 52px;
+    flex: 0 0 #{$logoWidthXS};
   }
+
+  $p: $border-padding_xs+$border-size__xs;
+  padding: $p $p 0 $p;
+
 
   #brand {
     z-index: 5;
@@ -25,26 +27,30 @@ header {
 
   @include media(sm) {
     #brand, #nav-toggle {
-      flex: 0 0 62px;
+      flex: 0 0 #{$logoWidthSM};
     }
-    padding: $border-padding_sm+$border-size__sm;
+    $p: $border-padding_sm+$border-size__sm;
+    padding: $p $p 0 $p;
   }
   @include media(md) {
     #brand, #nav-toggle {
-      flex: 0 0 72px;
+      flex: 0 0 #{$logoWidthMD};
     }
-    padding: $border-padding_md+$border-size__md;
+    $p: $border-padding_md+$border-size__md;
+    padding: $p $p 0 $p;
   }
   @include media(lg) {
     #brand, #nav-toggle {
-      flex: 0 0 82px;
+      flex: 0 0 #{$logoWidthLG};
     }
-    padding: $border-padding_lg+$border-size__lg;
+    $p: $border-padding_lg+$border-size__lg;
+    padding: $p $p 0 $p;
   }
   @include media(xl) {
     #brand, #nav-toggle {
-      flex: 0 0 92px;
+      flex: 0 0 #{$logoWidthXL};
     }
-    padding: $border-padding_xl+$border-size__xl;
+    $p: $border-padding_xl+$border-size__xl;
+    padding: $p $p 0 $p;
   }
 }

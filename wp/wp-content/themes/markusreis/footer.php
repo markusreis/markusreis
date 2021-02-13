@@ -10,6 +10,7 @@
  */
 ?>
 
+</div><!-- #inner-content -->
 </div><!-- #content -->
 
 <!-- footer -->

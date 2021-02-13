@@ -22,7 +22,7 @@
     wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> style="background-color: #181818">
+<body <?php body_class('heebo'); ?> style="background-color: #181818">
 
 <div class="c-frame"></div>
 
@@ -55,7 +55,7 @@
             wp_nav_menu(
                 array(
                     'container'      => '',
-                    'menu_class'     => 'alatsi text-xxl',
+                    'menu_class'     => 'alatsi alatsi--split text-xxl',
                     'theme_location' => 'main',
                 )
             );
@@ -69,3 +69,16 @@
 
     <div class="scroll">
     </div>
+
+    <div id="inner-content">
+
+
+        <div class="c-line padding-bottom">
+            <div class="c-line__inner">
+                <div class="c-line__line">
+                    <div class="c-line__thumb" data-cursor data-cursor-action="thumb">
+                        <div class="c-line__thumb__inner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>

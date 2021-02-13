@@ -175,4 +175,53 @@ function theme_init_post_type($singular, $plural, $slug, $menu, $icon)
     );
 
     register_post_type($slug, $args);
+
+    add_theme_support('post-thumbnails', array(
+        'products',
+    ));
+}
+
+add_image_size('sm', 320);
+add_image_size('md', 768);
+add_image_size('lg', 1024);
+add_image_size('xl', 1280);
+add_image_size('xxl', 2048);
+
+function responsive_picture($img, $max = 2049)
+{
+    $sizes = [
+        'sm'  => 320,
+        'md'  => 768,
+        'lg'  => 1024,
+        'xl'  => 1280,
+        'xxl' => 2048,
+    ];
+
+    $out = '<img src="image-small.png" srcset="';
+    foreach ($sizes as $key => $width) {
+        $out .= $img['sizes'][$key] . ' ' . $width . 'w,';
+    }
+    $out = rtrim($out, ',') . '" alt="' . $img['alt'] . '">';
+    return $out;
+}
+
+remove_image_size('thumbnail');
+remove_image_size('medium');
+remove_image_size('medium-large');
+remove_image_size('large');
+remove_image_size('1536x1536');
+remove_image_size('2048x2048');
+
+
+function str_split_unicode($str, $l = 0)
+{
+    if ($l > 0) {
+        $ret = array();
+        $len = mb_strlen($str, "UTF-8");
+        for ($i = 0; $i < $len; $i += $l) {
+            $ret[] = mb_substr($str, $i, $l, "UTF-8");
+        }
+        return $ret;
+    }
+    return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 }

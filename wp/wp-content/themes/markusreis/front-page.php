@@ -17,7 +17,8 @@ get_header();
 
     <main id="main" class="front-page">
 
-        <h1 class="alatsi text-xxl">I am ready for <span class="front-page__future">our future.</span><span
+        <h1 class="alatsi text-xxl padding-bottom will-fade">I am ready for <span
+                    class="front-page__future">our future.</span><span
                     class="front-page__are-you">Are you?</span></h1>
 
     </main>

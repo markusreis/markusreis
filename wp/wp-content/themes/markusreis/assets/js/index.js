@@ -24,3 +24,4 @@ import {nav} from "./simples/nav";
         preload(({p}) => {console.log(p)}).then(() => window.app = new App())
     })
 })()
+

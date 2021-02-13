@@ -7,8 +7,6 @@
     width: 100%;
     text-align: center;
     line-height: 28px;
-    transition: opacity .6s ease, filter .6s ease;
-    transition-delay: .5s;
 
     @include media(xs) {
       line-height: 44px;
@@ -51,13 +49,5 @@
     &__are-you {
       margin-bottom: 0;
     }
-  }
-}
-
-[data-nav-expanded="true"] {
-  h1 {
-    transition-delay: 0s;
-    filter: blur(20px);
-    opacity: 0;
   }
 }
