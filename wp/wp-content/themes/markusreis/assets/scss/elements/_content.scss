@@ -1,0 +1,16 @@
+#content {
+  height: 100%;
+  padding: $border-padding_xs + $border-size__xs;
+  @include media(sm) {
+    padding: $border-padding_sm + $border-size__sm;
+  }
+  @include media(md) {
+    padding: $border-padding_md + $border-size__md;
+  }
+  @include media(lg) {
+    padding: $border-padding_lg + $border-size__lg;
+  }
+  @include media(xl) {
+    padding: $border-padding_xl + $border-size__xl;
+  }
+}

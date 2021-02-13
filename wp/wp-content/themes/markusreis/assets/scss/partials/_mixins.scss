@@ -1,0 +1,16 @@
+@mixin aspect-ratio($x,$y) {
+  &:before {
+    content: "";
+    width: 1px;
+    margin-left: -1px;
+    float: left;
+    height: 0;
+    padding-top: #{($y / $x) * 100%}; //change this to apply aspect ratio for image
+  }
+
+  &:after { /* to clear float */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

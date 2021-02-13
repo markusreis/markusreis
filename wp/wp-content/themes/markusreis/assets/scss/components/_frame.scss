@@ -1,0 +1,29 @@
+.c-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  border: 0 solid white;
+  width: 100%;
+  height: 100%;
+  transition: border 2s cubic-bezier(.17, .67, .5, .99);
+}
+
+.initial-loaded {
+  .c-frame {
+    pointer-events: none;
+    border-width: $border-size__xs;
+    @include media(sm) {
+      border-width: $border-size__sm;
+    }
+    @include media(md) {
+      border-width: $border-size__md;
+    }
+    @include media(lg) {
+      border-width: $border-size__lg;
+    }
+    @include media(xl) {
+      border-width: $border-size__xl;
+    }
+  }
+}

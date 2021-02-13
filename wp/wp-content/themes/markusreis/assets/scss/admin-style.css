@@ -1,0 +1,409 @@
+pre {
+  margin-left: 170px;
+}
+
+div[id*=widget][id*=tippinsider] .widget-top {
+  background-color: #74b3d2;
+}
+
+.acf-field[data-name=content_elements] .values > .layout {
+  border: 3px solid #377dae;
+  border-radius: 5px;
+}
+.acf-field[data-name=content_elements] .values > .layout .acf-fc-layout-handle {
+  background-color: #98C1D9;
+}
+
+#adminmenu {
+  display: flex;
+  flex-direction: column;
+}
+#adminmenu #menu-dashboard {
+  order: 1;
+}
+#adminmenu li.wp-menu-separator {
+  height: 0;
+  margin: 0;
+}
+#adminmenu #menu-comments {
+  display: none;
+}
+#adminmenu #menu-posts {
+  display: none;
+}
+#adminmenu #toplevel_page_banking-menu {
+  display: none;
+}
+#adminmenu #toplevel_page_education-menu {
+  display: none;
+}
+#adminmenu #menu-pages {
+  order: 20;
+}
+#adminmenu #menu-pages div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-pages.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-pages:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-projects {
+  order: 20;
+}
+#adminmenu #menu-posts-projects div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-projects.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-projects:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-blog {
+  order: 20;
+}
+#adminmenu #menu-posts-blog div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-blog.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-blog:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-news {
+  order: 20;
+}
+#adminmenu #menu-posts-news div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-news.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-news:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_state-menu {
+  order: 20;
+}
+#adminmenu #toplevel_page_state-menu div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_state-menu.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_state-menu:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_article-menu {
+  order: 20;
+}
+#adminmenu #toplevel_page_article-menu div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_article-menu.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_article-menu:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_education-menu {
+  order: 20;
+}
+#adminmenu #toplevel_page_education-menu div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_education-menu.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_education-menu:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_banking-menu {
+  order: 20;
+}
+#adminmenu #toplevel_page_banking-menu div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_banking-menu.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_banking-menu:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_games-menu {
+  order: 20;
+}
+#adminmenu #toplevel_page_games-menu div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_games-menu.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_games-menu:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-banking {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-banking div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-banking.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-banking:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-education {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-education div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-education.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-education:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-promo {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-promo div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-promo.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-promo:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-slot {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-slot div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-slot.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-slot:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-game {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-game div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-game.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-game:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-advisor {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-advisor div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-advisor.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-advisor:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-action {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-action div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-action.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-action:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-developer {
+  order: 20;
+}
+#adminmenu #menu-posts-casino-developer div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-developer.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #menu-posts-casino-developer:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_slot-menu {
+  order: 20;
+}
+#adminmenu #toplevel_page_slot-menu div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_slot-menu.wp-menu-open div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_slot-menu:hover div.wp-menu-image:before {
+  color: #438aae;
+}
+#adminmenu #toplevel_page_casino-menu {
+  order: 30;
+}
+#adminmenu #toplevel_page_casino-menu div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_casino-menu.wp-menu-open div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_casino-menu:hover div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_poker-menu {
+  order: 30;
+}
+#adminmenu #toplevel_page_poker-menu div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_poker-menu.wp-menu-open div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_poker-menu:hover div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_sports-betting-menu {
+  order: 30;
+}
+#adminmenu #toplevel_page_sports-betting-menu div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_sports-betting-menu.wp-menu-open div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_sports-betting-menu:hover div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_fantasy-betting-menu {
+  order: 30;
+}
+#adminmenu #toplevel_page_fantasy-betting-menu div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_fantasy-betting-menu.wp-menu-open div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_fantasy-betting-menu:hover div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_lotteries-menu {
+  order: 30;
+}
+#adminmenu #toplevel_page_lotteries-menu div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_lotteries-menu.wp-menu-open div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #toplevel_page_lotteries-menu:hover div.wp-menu-image:before {
+  color: #00b894;
+}
+#adminmenu #menu-tools {
+  order: 40;
+}
+#adminmenu #menu-tools div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-tools.wp-menu-open div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-tools:hover div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-settings {
+  order: 40;
+}
+#adminmenu #menu-settings div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-settings.wp-menu-open div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-settings:hover div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-appearance {
+  order: 40;
+}
+#adminmenu #menu-appearance div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-appearance.wp-menu-open div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-appearance:hover div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-media {
+  order: 40;
+}
+#adminmenu #menu-media div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-media.wp-menu-open div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-media:hover div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-plugins {
+  order: 40;
+}
+#adminmenu #menu-plugins div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-plugins.wp-menu-open div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-plugins:hover div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-users {
+  order: 40;
+}
+#adminmenu #menu-users div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-users.wp-menu-open div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu #menu-users:hover div.wp-menu-image:before {
+  color: #fdcb6e;
+}
+#adminmenu > li {
+  order: 80;
+}
+#adminmenu > li #collapse-menu {
+  order: 90;
+}
+#adminmenu #menu-settings {
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#adminmenu div.wp-menu-image:before {
+  color: #74b3d2;
+}
+#adminmenu.wp-menu-open div.wp-menu-image:before {
+  color: #74b3d2;
+}
+#adminmenu:hover div.wp-menu-image:before {
+  color: #74b3d2;
+}
+
+/*# sourceMappingURL=admin-style.css.map */

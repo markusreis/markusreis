@@ -1,0 +1,123 @@
+$base-font-size: 16;
+
+
+@mixin font-size( $px ) {
+  font-size: #{ ($px / $base-font-size) }rem;
+}
+
+@mixin responsive-font($nm, $xs,$sm,$md,$lg,$xl,$xxl) {
+  @include font-size($nm);
+  @include media(xs) {
+    @include font-size($xs);
+  }
+  @include media(sm) {
+    @include font-size($sm);
+  }
+  @include media(md) {
+    @include font-size($md);
+  }
+  @include media(lg) {
+    @include font-size($lg);
+  }
+  @include media(xl) {
+    @include font-size($xl);
+  }
+  @include media(xxl) {
+    @include font-size($xxl);
+  }
+}
+
+body {
+  @include responsive-font(16, 16, 16, 18, 18, 20, 20);
+  color: white;
+}
+
+
+.heebo {
+  font-family: 'Heebo', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  &--thin {
+    font-weight: 200;
+  }
+
+  &--light {
+    font-weight: 300;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--semi-bold {
+    font-weight: 600;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+}
+
+.alatsi {
+  font-family: 'Alatsi', Helvetica, Arial, sans-serif;
+}
+
+.text-xs {
+  &.heebo {
+    @include responsive-font(10, 10, 10, 12, 12, 14, 14);
+  }
+
+  &.alatsi {
+    @include responsive-font(10, 10, 10, 12, 12, 14, 14);
+  }
+}
+
+.text-sm {
+  &.heebo {
+    @include responsive-font(12, 12, 12, 14, 14, 16, 16);
+  }
+
+  &.alatsi {
+    @include responsive-font(12, 12, 12, 14, 14, 16, 16);
+  }
+}
+
+.text-md {
+  &.heebo {
+    @include responsive-font(18, 18, 18, 20, 20, 22, 22);
+  }
+
+  &.alatsi {
+    @include responsive-font(18, 18, 18, 20, 20, 22, 22);
+  }
+}
+
+.text-lg {
+  &.heebo {
+    @include responsive-font(24, 24, 24, 28, 28, 32, 32);
+  }
+
+  &.alatsi {
+    @include responsive-font(24, 24, 24, 28, 28, 32, 32);
+  }
+}
+
+.text-xl {
+  &.heebo {
+    @include responsive-font(32, 32, 32, 34, 34, 38, 38);
+  }
+
+  &.alatsi {
+    @include responsive-font(32, 32, 32, 34, 34, 38, 38);
+  }
+}
+
+.text-xxl {
+  &.heebo {
+    @include responsive-font(32, 48, 54, 54, 62, 68, 78);
+  }
+
+  &.alatsi {
+    @include responsive-font(32, 48, 54, 54, 62, 68, 78);
+  }
+}

@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  wordpress:
+    image: ${CI_REGISTRY}/${CI_PROJECT_PATH}/wordpress/${CI_COMMIT_REF_NAME}:${CI_COMMIT_SHA}
+    volumes:
+    - "uploads:/var/www/html/wp-content/uploads"
+    - "cache:/var/www/html/wp-content/cache"
+    environment:
+      WORDPRESS_DB_NAME: ${RDS_STAGE_DB_NAME}
+      WORDPRESS_DB_HOST: "${RDS_HOST}:3306"
+      WORDPRESS_DB_USER: ${RDS_STAGE_USER}
+      WORDPRESS_DB_PASSWORD: ${RDS_STAGE_PW}
+      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_DB_PREFIX}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_CACHE', true);
+        define('DISABLE_WP_CRON', true);
+    networks:
+    - backend
+
+networks:
+  backend:
+
+volumes:
+  uploads:
+  cache:

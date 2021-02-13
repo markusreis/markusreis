@@ -1,0 +1,27 @@
+$layout__column-count: 12;
+$layout__gap: 30; // px
+
+$used-breakpoints: '', '\\@xs', '\\@sm', '\\@md', '\\@lg', '\\@xl', '\\@xxl';
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  @each $breakpoint in $used-breakpoints {
+    @for $i from 1 through ($layout__column-count) {
+      &-#{$i}#{$breakpoint} {
+        @if $breakpoint == '' {
+          width: #{$i * (100% / ($layout__column-count))};
+        } @else {
+          @include media($breakpoint) {
+            padding-left: #{$layout__gap / 2}px;
+            padding-right: #{$layout__gap / 2}px;
+            width: #{$i * (100% / ($layout__column-count))};
+          }
+        }
+      }
+    }
+  }
+}
