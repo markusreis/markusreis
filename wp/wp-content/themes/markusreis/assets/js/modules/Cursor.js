@@ -90,32 +90,34 @@ export class Cursor {
                                 })
     }
 
-    thumb(node) {
-        this.cursors[1].node.style.opacity = '.9'
-        this.cursors[1].node.style.background = 'white'
-        this.cursors[1].node.style.borderRadius = '0px'
-        this.cursors[1].node.style.height = `${node.clientHeight + 5}px`
-        this.cursors[1].node.style.width = '6px'
-        const {top, left} = getCumulativeElementOffset(node)
-        this.updateCursorTarget({
-                                    x: left,
-                                    y: top - 2 + node.clientHeight / 2
-                                })
-    }
-
     updateCursorTarget({x, y}) {
         if (this.cursors[0].lastPosition.x === -1) {
             this.cursors.forEach((cursor, i) => {
-                this.cursors[i].lastPosition.x = x
-                this.cursors[i].lastPosition.y = y
-                this.cursors[i].targetPosition.x = x
-                this.cursors[i].targetPosition.y = y
+                if (x) {
+                    this.cursors[i].lastPosition.x = x
+                    this.cursors[i].targetPosition.x = x
+                }
+                if (y) {
+                    this.cursors[i].lastPosition.y = y
+                    this.cursors[i].targetPosition.y = y
+                }
             })
         }
         this.cursors.forEach((cursor, i) => {
-            this.cursors[i].targetPosition.x = x
-            this.cursors[i].targetPosition.y = y
+            if (x) {
+                this.cursors[i].targetPosition.x = x
+            }
+            if (y) {
+                this.cursors[i].targetPosition.y = y
+            }
         })
+    }
+
+    getCursorTargetPosition() {
+        return {
+            x: this.cursors[0].targetPosition.x,
+            y: this.cursors[0].targetPosition.y,
+        }
     }
 
     animate() {

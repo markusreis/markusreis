@@ -10,6 +10,10 @@ const toNode = (str) => {
     return d.children[0]
 }
 
+const clamp = (min, max, v) => {
+    return Math.max(min, Math.min(max, v))
+}
+
 const selfOrClosest = (el, key, type = 'class') => {
     if (type === 'class') {
         if (el.classList.contains(key)) {
@@ -43,5 +47,6 @@ export {
     lerp,
     toNode,
     selfOrClosest,
-    getCumulativeElementOffset
+    getCumulativeElementOffset,
+    clamp
 };

@@ -12,8 +12,8 @@ import {Scroll} from "./modules/Scroll";
             this.three = new Three({container: document.documentElement, app: this})
             this.cursor = new Cursor({app: this})
             this.three.init()
-            
-            this.scroll = new Scroll()
+
+            this.scroll = new Scroll({app: this})
 
             this._state = {
                 sphereSizeLocked: true

@@ -5,6 +5,13 @@
   display: flex;
   justify-content: flex-end;
 
+  &--active {
+    * {
+      user-select: none;
+      cursor: grabbing !important;
+    }
+  }
+
 
   &__inner {
     position: relative;

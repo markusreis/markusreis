@@ -792,6 +792,10 @@ nav span {
   display: flex;
   justify-content: flex-end;
 }
+.c-line--active * {
+  user-select: none;
+  cursor: grabbing !important;
+}
 .c-line__inner {
   position: relative;
   width: 1px;
