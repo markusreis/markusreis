@@ -7,8 +7,9 @@ import {Scroll} from "./modules/Scroll";
 (function () {
 
     class App {
-        constructor() {
+        constructor() { this.init(); }
 
+        init() {
             this.three = new Three({container: document.documentElement, app: this})
             this.cursor = new Cursor({app: this})
             this.three.init()
@@ -20,6 +21,8 @@ import {Scroll} from "./modules/Scroll";
             }
 
             nav()
+
+            window.booted = true
         }
     }
 

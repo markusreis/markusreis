@@ -9,12 +9,17 @@ import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.j
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {lerp} from "../utils";
+import {SkewImages} from "./SkewImages";
+
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
+
 
 export class Three {
-    constructor({container, app}) {
+    constructor({app, container = window}) {
         this._app = app;
-        this.width = window.innerWidth
-        this.height = window.innerHeight
+
+        this.width = container === window ? window.innerWidth : container.clientWidth
+        this.height = container === window ? window.innerHeight : container.clientHeight
 
         this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, .1, 100)
         this.camera.position.set(0, 0, 4);
@@ -27,17 +32,35 @@ export class Three {
         this.renderer = new THREE.WebGLRenderer({antialias: true})
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        document.getElementById('content').prepend(this.renderer.domElement)
+        if (container === window) {
+            document.getElementById('content').prepend(this.renderer.domElement)
+        } else {
+            container.prepend(this.renderer.domElement)
+        }
+
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
 
         this.onWindowResize();
         window.addEventListener('resize', this.onWindowResize.bind(this), false)
 
         this.addProperties()
+
         this.addPost()
-        this.addMouseMove()
-        this.addParticles();
+        //this.addMouseMove()
+        //this.addParticles();
+        //this.removeParticles()
+
+        this.skewImages = new SkewImages({three: this, app: app})
+        this.skewImages.init([...document.querySelectorAll('.projects__images__inner .projects__image__inner')])
 
         this.animate()
+    }
+
+    setContainer(c) {
+        this.width = c === window ? window.innerWidth : c.clientWidth
+        this.height = c === window ? window.innerHeight : c.clientHeight
+        this.onWindowResize()
+        c.append(this.renderer.domElement)
     }
 
     init() {
@@ -148,23 +171,25 @@ export class Three {
         }
 
 
-        this.gui = new dat.GUI();
-        this.gui.closed = true
-        this.gui.add(this.settings, "pointLightIntensity", 0, 1, 0.01)
-        this.gui.add(this.settings, "pointLightDistance", 0, 20, 0.01)
-        this.gui.add(this.settings, "pointLightIntensity2", 0, 1, 0.01)
-        this.gui.add(this.settings, "pointLightDistance2", 0, 20, 0.01)
-        this.gui.add(this.settings, "pointLightDistance2z", 0, 2, 0.01)
+        //this.gui = new dat.GUI();
+        //this.gui.closed = true
+        //this.gui.add(this.settings, "pointLightIntensity", 0, 1, 0.01)
+        //this.gui.add(this.settings, "pointLightDistance", 0, 20, 0.01)
+        //this.gui.add(this.settings, "pointLightIntensity2", 0, 1, 0.01)
+        //this.gui.add(this.settings, "pointLightDistance2", 0, 20, 0.01)
+        //this.gui.add(this.settings, "pointLightDistance2z", 0, 2, 0.01)
     }
 
     setMousePosition({x, y}) {
-        this.lastMousePosition.x = (x / this.width) * 2 - 1
-        this.lastMousePosition.y = (y / this.height) * 2 - 1
-        this.raycaster.setFromCamera(this.lastMousePosition, this.camera)
-        const intersects = this.raycaster.intersectObject(this.testPlane)
-        if (intersects.length > 0) {
-            intersects[0].point.y = -intersects[0].point.y
-            this.mousePosition = intersects[0].point
+        if (this.lastMousePosition) {
+            this.lastMousePosition.x = (x / this.width) * 2 - 1
+            this.lastMousePosition.y = (y / this.height) * 2 - 1
+            this.raycaster.setFromCamera(this.lastMousePosition, this.camera)
+            const intersects = this.raycaster.intersectObject(this.testPlane)
+            if (intersects.length > 0) {
+                intersects[0].point.y = -intersects[0].point.y
+                this.mousePosition = intersects[0].point
+            }
         }
     }
 
@@ -236,27 +261,41 @@ export class Three {
     }
 
     animate() {
-        this.lerpMousePosition.x = lerp(this.lerpMousePosition.x, this.mousePosition.x, .05)
-        this.lerpMousePosition.y = lerp(this.lerpMousePosition.y, this.mousePosition.y, .05)
-        this.lerpMousePosition.z = lerp(this.lerpMousePosition.z, this.mousePosition.z, .05)
-
-        const shortSide = this.width < this.height ? this.width : this.height;
-        const shortSideFactor = Math.pow(shortSide / this.settings.perfectShortSideLength, this.settings.shortSideFactorImpact)
-
-        this.particleMaterial.uniforms.mousePosition.value = this.lerpMousePosition
-        this.particleMaterial.uniforms.particleSizeFactor.value = shortSideFactor
-        this.particleMaterial.uniforms.progress.value = this.settings.progress
-        this.particleMaterial.uniforms.recoverySpeed.value = this.settings.recoverySpeed
-        this.particleMaterial.uniforms.animationDuration.value = this.settings.animationDuration
-        this.particleMaterial.uniforms.maxColorShift.value = this.settings.maxColorShift
-
-        this.bloomPass.strength = this.settings.bloomStrength * shortSideFactor
-
         this.time = !!this.clock ? this.clock.getElapsedTime() : 0
-        this.particleMaterial.uniforms.time.value = this.time
+
+        if (this.particles) {
+            this.lerpMousePosition.x = lerp(this.lerpMousePosition.x, this.mousePosition.x, .05)
+            this.lerpMousePosition.y = lerp(this.lerpMousePosition.y, this.mousePosition.y, .05)
+            this.lerpMousePosition.z = lerp(this.lerpMousePosition.z, this.mousePosition.z, .05)
+
+            const shortSide = this.width < this.height ? this.width : this.height;
+            const shortSideFactor = Math.pow(shortSide / this.settings.perfectShortSideLength, this.settings.shortSideFactorImpact)
+
+            this.particleMaterial.uniforms.mousePosition.value = this.lerpMousePosition
+            this.particleMaterial.uniforms.particleSizeFactor.value = shortSideFactor
+            this.particleMaterial.uniforms.progress.value = this.settings.progress
+            this.particleMaterial.uniforms.recoverySpeed.value = this.settings.recoverySpeed
+            this.particleMaterial.uniforms.animationDuration.value = this.settings.animationDuration
+            this.particleMaterial.uniforms.maxColorShift.value = this.settings.maxColorShift
+
+            this.bloomPass.strength = this.settings.bloomStrength * shortSideFactor
+            this.particleMaterial.uniforms.time.value = this.time
+            this.composer.render();
+        } else {
+            this.renderer.render(this.scene, this.camera);
+
+            this.skewImages.updatePositions()
+        }
         requestAnimationFrame(this.animate.bind(this));
-        this.composer.render();
     }
+
+    visibleHeightAtZDepth(depth = 0) {
+        return (2 * Math.tan(this.camera.fov * Math.PI / 180 / 2) * (this.camera.position.z - depth));
+    };
+
+    visibleWidthAtZDepth(depth = 0) {
+        return this.visibleHeightAtZDepth(depth) * this.camera.aspect;
+    };
 
     onWindowResize() {
         this.camera.aspect = this.width / this.height

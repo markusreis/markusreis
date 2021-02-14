@@ -1439,8 +1439,14 @@ body {
 }
 .projects__image {
   width: 100%;
-  height: 100%;
+  height: calc(100% + 30px);
   overflow: hidden;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: stretch;
+}
+.projects__image__inner {
+  width: 100%;
 }
 .projects__image img {
   position: absolute;
@@ -1448,11 +1454,16 @@ body {
   height: 100%;
   object-fit: cover;
 }
+.projects__images canvas {
+  bottom: 0;
+  top: auto;
+}
 .projects__images__inner {
   overflow: hidden;
   height: 100%;
 }
 .projects__images__slider {
+  opacity: 0;
   height: 100%;
 }
 @media only screen and (min-width: 768px) {
@@ -1460,6 +1471,16 @@ body {
     padding-top: 135px;
     height: 100%;
   }
+}
+
+.c-line--active .projects__title[data-active=true] {
+  transition-delay: 0s !important;
+  filter: blur(6px) !important;
+  opacity: 0.75 !important;
+}
+
+.c-line--released .projects__title[data-active=true] {
+  transition-delay: 0s !important;
 }
 
 .projects__images {

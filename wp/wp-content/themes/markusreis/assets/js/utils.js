@@ -1,7 +1,7 @@
-const lerp = function (value1, value2, amount) {
+const lerp = function (a, b, amount) {
     amount = amount < 0 ? 0 : amount;
     amount = amount > 1 ? 1 : amount;
-    return value1 + (value2 - value1) * amount;
+    return a + (b - a) * amount;
 }
 
 const toNode = (str) => {
@@ -33,14 +33,27 @@ const selfOrClosest = (el, key, type = 'class') => {
 
 
 const getCumulativeElementOffset = (el) => {
-    var _x = 0;
-    var _y = 0;
-    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-        _x += el.offsetLeft - el.scrollLeft;
-        _y += el.offsetTop - el.scrollTop;
-        el = el.parentElement;
+    var el2 = el;
+    var curtop = 0;
+    var curleft = 0;
+    if (document.getElementById || document.all) {
+        do {
+            curleft += el.offsetLeft - el.scrollLeft;
+            curtop += el.offsetTop - el.scrollTop;
+            el = el.offsetParent;
+            el2 = el2.parentNode;
+            while (el2 != el) {
+                curleft -= el2.scrollLeft;
+                curtop -= el2.scrollTop;
+                el2 = el2.parentNode;
+            }
+        } while (el.offsetParent);
+
+    } else if (document.layers) {
+        curtop += el.y;
+        curleft += el.x;
     }
-    return {top: _y, left: _x};
+    return {top: curtop, left: curleft};
 };
 
 export {

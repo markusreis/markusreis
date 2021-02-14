@@ -52,7 +52,7 @@ get_header();
             echo '<div class="projects__images__inner">';
             echo '<div class="projects__images__slider">';
             foreach ($images as $image) {
-                echo '<div class="projects__image">' . responsive_picture($image) . '</div>';
+                echo '<div class="projects__image"><div class="projects__image__inner">' . responsive_picture($image) . '</div></div>';
             }
             echo '</div>';
             echo '</div>';

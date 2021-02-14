@@ -9,7 +9,13 @@ export class Cursor {
         const slowCursor = document.getElementById('cursor-slow')
         const slowCursorTwo = document.getElementById('cursor-slow-two')
 
-        this.activeNode = null
+        this.forceLock = false
+        this.activeNode = null;
+
+        this._conf = {
+            normalSize  : 25,
+            enlargedSize: 75
+        }
 
         this.cursors = [
             {
@@ -33,7 +39,7 @@ export class Cursor {
         this.cursor = document.getElementById('cursor')
         window.addEventListener('mousemove', e => {
             this._app.three.setMousePosition({x: e.clientX, y: e.clientY})
-            const node = selfOrClosest(e.target, 'cursor', 'dataset')
+            const node = this.forceLock && !!this.activeNode ? this.activeNode : selfOrClosest(e.target, 'cursor', 'dataset')
             if (node) {
                 document.documentElement.classList.add('cursor-locked')
                 if (this.activeNode !== node) {
@@ -75,6 +81,14 @@ export class Cursor {
                 }
             }
         })
+    }
+
+    thumb(node) {
+        const {top, left} = getCumulativeElementOffset(node)
+        this.updateCursorTarget({
+                                    x: left - this._conf.normalSize + node.clientWidth / 2 + 4,
+                                    y: top + node.clientHeight / 2
+                                })
     }
 
     underline(node) {
